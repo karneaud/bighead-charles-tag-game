@@ -1,0 +1,25 @@
+$background:#C9D955;
+$secondary: #F2357B;
+$foreground: #818C2E;
+$heading: #03A6A6;
+$primary: #F2921D;
+$link: $primary;
+$link-darkened: #99A63C;
+$link-muted: #B1BF49;
+$text: #0D0D0D;
+$text-muted: #abb1ba;
+$base-font: 'M PLUS Rounded 1c'; 
+/*Game variables */
+$asset-base-url: "./assets/";
+$bush-left: 'bush1.png';
+$bush-bottom: 'bush2.png';
+$charles-left: 'ch1.png';
+$charles-bottom: 'ch4.png';
+$charles-top: 'ch3.png';
+
+$transition-speed: 3s;
+
+/* Breakpoints */
+$bp-sm: 600px;
+$bp-md: 700px;
+$bp-lg: 1024px;

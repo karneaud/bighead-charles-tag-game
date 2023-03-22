@@ -1,0 +1,150 @@
+@import "./mixins";
+
+/* Game Scene Layout */
+  .game-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* timer and score board*/
+  .dashboard {
+    border-radius: 12px;
+    border:7px solid $secondary;
+    padding: 4px;
+    background-color: white;
+    color: $text;
+    position: fixed;
+    right: 1%;
+    top: 1%;
+    width:auto;
+    display: inline-block;
+  }
+/* Big Head chares hit area */
+  .charles {
+    z-index: 4;
+    position: absolute;
+    width: 20%;
+    height: 25%;
+    overflow: hidden;
+    /* artwork */
+    .bighead, .bush {
+      position: relative;
+      display: block;
+      background-repeat: no-repeat;
+      background-position: 50% bottom;
+      background-size: contain;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80%;
+      right: 0;
+    }
+
+    &.left-center, &.right-center {
+      .bighead {
+        background-image: url(#{$asset-base-url+$charles-left});
+      }
+      
+      .bush {
+        background-image: url(#{$asset-base-url+$bush-left});
+      }
+    }
+
+    &.right-center.horizontal-reflect {
+      transform: scaleX(-1) translateY(-50%);
+    }
+
+    &.bottom-center {
+      .bighead {
+        background-image: url(#{$asset-base-url+$charles-bottom});
+      }
+      
+      .bush {
+        background-image: url(#{$asset-base-url+$bush-bottom});
+      }
+    }
+
+    &.top-center {
+      .bighead {
+        background-image: url(#{$asset-base-url+$charles-top});
+      }
+      
+      .bush {
+        background-image: none;
+      }
+    }
+
+
+  
+  .bush {
+    width: 100%;
+    height: 35%;
+    bottom: 0;
+    top:auto;
+    position: absolute;
+    background-position-y: 200%;
+  }
+
+}
+
+/* positioning */
+  
+  .top-center {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .left-center {
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  
+  .right-center {
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+  
+  .bottom-center {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+
+
+  // Define class for horizontal reflection
+  .horizontal-reflect {
+    @include vendor-prefix('box-reflect', 'below 0px linear-gradient(transparent, rgba(0, 0, 0, 0.2))');
+      }
+  
+  // Define class for vertical reflection
+  .vertical-reflect {
+    @include vendor-prefix('box-reflect', 'right 0px linear-gradient(transparent, rgba(0, 0, 0, 0.2))');
+  }
+  
+.down {
+  // Set the initial position of the div to be below its parent
+  transform: matrix(1, 0, 0, 1, 0, 100);
+  // Add a transition effect to the transform property
+  transition: transform calc($transition-speed/2) ease-out;  
+}
+
+// Define the up class
+.up {
+  // Set the initial position of the div to be below its parent
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  // Add a transition effect to the transform property
+  transition: transform $transition-speed ease-out;
+}
+
+// Define a close class that makes the transition quicker
+.close {
+  // Set the transition speed to be quicker
+  transition-duration: $transition-speed/2;
+}

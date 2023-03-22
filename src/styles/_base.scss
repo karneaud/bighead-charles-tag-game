@@ -1,0 +1,53 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: $background;
+  &, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+  }
+  overflow: hidden;
+}
+body {
+  color: $text;
+  font-family: "Arial", sans-serif;
+  background-image: url(#{$asset-base-url + 'background.png'});
+  background-size: 50%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $heading;
+  margin-top: 0;
+  text-align: center;
+  font-family: $base-font;
+}
+
+a {
+  color: $link;
+  text-decoration: none;
+
+  &:hover {
+    color: lighten($link, .5 );
+  }
+}
+
+pre {
+  overflow-x: scroll;
+  width: 100%;
+}
+
+p {
+  line-height: 1.6em;
+  margin: 0 auto 1em auto;
+  max-width: 800px;
+}

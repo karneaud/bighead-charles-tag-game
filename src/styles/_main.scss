@@ -1,0 +1,13 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  padding: 3em 1.5em;
+  justify-content: center;
+
+
+  .container {
+    margin: 0 auto;
+    max-width: 1140px;
+    width: 100%;
+  }
+}

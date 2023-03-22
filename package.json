@@ -1,0 +1,30 @@
+{
+  "name": "parcel-html-sass-js-starter-template",
+  "version": "0.1.0",
+  "description": "Starter template for building static web apps with HTML partials, SASS, and JavaScript.",
+  "scripts": {
+    "clean": "rimraf dist",
+    "start": "npm run clean && parcel serve ./src/index.html",
+    "build": "npm run clean && parcel build ./src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aileen-r/parcel-html-sass-js-starter-template.git"
+  },
+  "author": "Aileen Rae",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aileen-r/parcel-html-sass-js-starter-template/issues"
+  },
+  "homepage": "https://parcel-html-sass-js-starter-template.netlify.app",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0",
+    "parcel": "^2.0.0",
+    "posthtml-include": "^1.7.2",
+    "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "prismjs": "^1.25.0"
+  }
+}
