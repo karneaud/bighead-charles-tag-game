@@ -70,6 +70,13 @@
     &.top-center {
       .bighead {
         background-image: url(#{$asset-base-url+$charles-top});
+        &.down {
+          transform: matrix(1, 0, 0, 1, 0, 0);
+        }
+
+        &.up {
+          transform: matrix(1, 0, 0, 1, 0, -100);
+        }
       }
       
       .bush {
