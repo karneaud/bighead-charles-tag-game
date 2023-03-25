@@ -1,7 +1,8 @@
-import helloWorld from "./scripts/helloWorld";
-import Prism from "prismjs";
+import Game from "./scripts/game";
+if(process.env.NODE_ENV != "production") {
+    (require('eruda')).init()
+}
 
-import "prismjs/themes/prism-coy.css";
-import "prismjs/components/prism-scss";
-
-helloWorld();
+(($) => {
+    Game.start()
+})(window)
