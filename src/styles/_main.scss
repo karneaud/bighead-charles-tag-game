@@ -1,3 +1,48 @@
+// Define color variables
+:root {
+  --background : $background,
+  --secondary : $secondary,
+  --foreground:$foreground,
+  --heading :$heading,
+  --primary:$primary,
+  --link:$link,
+  --lnked-darkened:$link-darkened,
+  --link-muted:$link-muted,
+  --text:$text,
+  --text-muted: $text-muted
+}
+// Define button mixin
+
+$colors : (
+'background': $background,
+'secondary': $secondary,
+'foreground': $foreground,
+'heading' : $heading,
+'primary': $primary,
+'link': $link,
+'lnked-darkened': $link,
+'link-muted': $link-muted,
+'text': $text,
+'text-muted': $text-muted );
+// Create the color classes using the button mixin
+.btn {
+  @each $color, $value in $colors {
+    &-#{$color} {
+      @include button($value, #ffffff, 'regular');
+    }
+  }
+}
+
+// Create the big and small classes using the button mixin
+.btn {
+  &-big {
+    @include button($primary, #fff, 'big');
+  }
+  &-small {
+    @include button($secondary, #fff, 'small');
+  }
+}
+
 .section {
   display: flex;
   flex-direction: column;
