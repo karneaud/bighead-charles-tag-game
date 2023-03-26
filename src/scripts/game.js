@@ -1,14 +1,60 @@
-import Countdown from "./countdown";
+class Singleton {
+    constructor() {
+      if (!Singleton.instance) {
+        this._state = false;
+        Singleton.instance = this;
+      }
+  
+      return Singleton.instance;
+    }
+  
+    get state() {
+      return this._state;
+    }
+  
+    set state(newState) {
+      let s = this._state;
+      this._state = newState;
+  
+      const event = new CustomEvent('gameStateChange', {
+        detail: {
+          currentState: this._state,
+          previousState: s
+        }
+      });
+  
+      window.document.dispatchEvent(event);
+    }
+  
+    start() {
+        $charless.forEach((e,i) => {
+            setTimeout(() => e.dispatchEvent(new Event('open:item')), Math.random() * 1000)    
+        })
+        this.state = 'started';
+    }
+  
+    stop() {
+        this.state = 'stopped';
+    }
+  
+    pause(timeRemaining) {
+        this.state = 'paused';
+    }
 
-const $charless = document.querySelectorAll('.charles');
-const touchClick = ('ontouchstart' in window) ? 'touchstart' : 'click';
-// Create a new Countdown object with an element selector.
-const countdown = new Countdown('#countdown');
+    resume() {
+        this.state = 'started';
+    }
+  
+    finish() {
+        console.info('finish function');
+        this.state = 'finished';
+        $charless.forEach((e) => {
+            e.dispatchEvent(new Event('clear:intvl'))
+        })
+    }
+}
 
-// Register event listeners for the various events.
-countdown.element.addEventListener('started', event => console.log(`Countdown started with ${event.detail} seconds`));
-countdown.element.addEventListener('paused', event => console.log(`Countdown paused with ${event.detail} seconds remaining`));
-countdown.element.addEventListener('stopped', event => console.log(`Countdown stopped with ${event.detail} seconds total`));
+const touchClick = ('ontouchstart' in window) ? 'touchstart' : 'click', $charless = document.querySelectorAll('.charles');
 
 $charless.forEach($s => {
     let closing = false;
@@ -21,9 +67,7 @@ $charless.forEach($s => {
             clearTimeout();
             closing = true;
             clicked = true;
-            //$s.classList.add('clicked');
             $s.dispatchEvent(new Event('close:item'));
-            console.log(`${$s.id} has beend clicked ${clicked} and is now closing ${closing}`);
         }
 
         return false;
@@ -36,7 +80,6 @@ $charless.forEach($s => {
             $s.dispatchEvent(new Event('close:item'));
             clearTimeout(intvl1);
         }, Math.random() * 2500);
-        console.log(`Hi its me ${$s.id}`)
     });
 
     $s.addEventListener('close:item', () => {
@@ -44,50 +87,28 @@ $charless.forEach($s => {
         let $bh = $s.querySelector('.bighead');
         $bh.classList.remove('up');       
         $bh.addEventListener('transitionend', onTransitionEnd);
-        // $s.classList.remove('clicked');
-        //$bh.classList.add('down');
     });
 
     const onTransitionEnd = () => {
         let $bh = $s.querySelector('.bighead');
         closing = false;
-        //$bh.classList.remove('down');
         intvl2 = setTimeout(() => {
             clicked = false;
             $s.dispatchEvent(new Event('open:item'));
             clearTimeout(intvl2)
         }, Math.random() * 2500);
-        console.debug($s.id, 'transition end',' clicked ', clicked, ' closing: ', closing);
         $bh.removeEventListener('transitionend', onTransitionEnd);
     };
 
     $s.addEventListener('clear:intvl', () => {
         let $bh = $s.querySelector('.bighead');
-        clearTimeout(intvl);
+        clearTimeout(intvl1);
+        clearTimeout(intvl2);
         closing = true;
         clicked = false;
-        $bh.classList.remove('up', 'click', 'down');
-        //$bh.classList.add('down');
+        $bh.classList.remove('up', 'click');
     });
         
 });
 
-export default {
-    start() {
-
-        //$charless[1].dispatchEvent(new Event('open:item'));
-
-        $charless.forEach((e,i) => {
-            setTimeout(() => e.dispatchEvent(new Event('open:item')), Math.random() * 1000)
-            countdown.element.addEventListener('ended', () => {
-                // e.dispatchEvent(new Event('clear:intvl'))
-            })    
-        })
-
-        countdown.start(90);
-        
-    },
-    pause(){
-        countdown.pause();
-    }
-}
+export default Singleton;
