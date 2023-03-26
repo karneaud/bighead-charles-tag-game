@@ -1,6 +1,6 @@
 class Countdown {
   constructor(selector) {
-    this.element = document.querySelector(selector);
+    this.element = window.document.querySelector(selector);
     this.totalSeconds = 0;
     this.secondsRemaining = 0;
     this.intervalId = null;
@@ -33,6 +33,7 @@ class Countdown {
       if (this.secondsRemaining === 0) {
         this.stop();
         this.emitEvent('ended');
+        console.log('ended');
       } else this.intervalId = window.requestAnimationFrame(tickHandler);
     };
     
