@@ -33,7 +33,6 @@ class Countdown {
       if (this.secondsRemaining === 0) {
         this.stop();
         this.emitEvent('ended');
-        console.log('ended');
       } else this.intervalId = window.requestAnimationFrame(tickHandler);
     };
     
