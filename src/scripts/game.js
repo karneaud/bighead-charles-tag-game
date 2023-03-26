@@ -46,7 +46,6 @@ class Singleton {
     }
   
     finish() {
-        console.info('finish function');
         this.state = 'finished';
         $charless.forEach((e) => {
             e.dispatchEvent(new Event('clear:intvl'))
@@ -67,6 +66,7 @@ $charless.forEach($s => {
             clearTimeout();
             closing = true;
             clicked = true;
+            document.dispatchEvent(new Event('charles:clicked'))
             $s.dispatchEvent(new Event('close:item'));
         }
 
@@ -79,24 +79,23 @@ $charless.forEach($s => {
         intvl1 = setTimeout(() => {
             $s.dispatchEvent(new Event('close:item'));
             clearTimeout(intvl1);
-        }, Math.random() * 2500);
+        }, Math.random() * 1500);
     });
 
     $s.addEventListener('close:item', () => {
-        closing = true;
         let $bh = $s.querySelector('.bighead');
         $bh.classList.remove('up');       
         $bh.addEventListener('transitionend', onTransitionEnd);
+        closing = true;
     });
 
     const onTransitionEnd = () => {
         let $bh = $s.querySelector('.bighead');
-        closing = false;
         intvl2 = setTimeout(() => {
-            clicked = false;
+            closing = clicked = false;
             $s.dispatchEvent(new Event('open:item'));
             clearTimeout(intvl2)
-        }, Math.random() * 2500);
+        }, Math.random() * 2000);
         $bh.removeEventListener('transitionend', onTransitionEnd);
     };
 
@@ -104,7 +103,7 @@ $charless.forEach($s => {
         let $bh = $s.querySelector('.bighead');
         clearTimeout(intvl1);
         clearTimeout(intvl2);
-        closing = true;
+        closing = false;
         clicked = false;
         $bh.classList.remove('up', 'click');
     });
