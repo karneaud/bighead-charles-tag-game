@@ -28,6 +28,7 @@
     "rimraf": "^3.0.2"
   },
   "dependencies": {
+    "preload-it": "^1.4.0",
     "prismjs": "^1.25.0",
     "tiny-modal": "^0.0.2"
   }
