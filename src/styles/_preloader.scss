@@ -1,0 +1,26 @@
+progress {
+    opacity: 0;
+}
+
+.progress-container {
+    position: relative;
+    display: inline-block;
+    background: $background;
+    height: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+    
+.progress-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: $primary;
+}
+
+.progress-container::before {
+    transition: width 0.1s;
+    width:var(--preloader-progress);
+}

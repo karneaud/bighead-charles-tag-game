@@ -2,7 +2,14 @@
     <div class="modal-dialog">
         <img id="logo" class="logo" src="./assets/logo.png" title="Big Head Charles"/>
         <div class="container"> 
-                <div id="start-message" class="show message">
+            <div id="preloader-message" class="show message">
+                <h3>Loading!</h3>
+                <p>Please wait!</p>
+                <div id="preloader" class="progress-container">
+                    <progress value="75" max="100">75%</progress>
+                  </div>
+            </div>
+            <div id="start-message" class="message">
                     <h3>Hi!</h3>
                     <p>Would you like to play?</p>
                     <a href="javascript:tinyModal.hide()" class="btn btn-primary modal-hide">Let's Play!</a>
