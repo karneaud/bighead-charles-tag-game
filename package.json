@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "start": "npm run clean && parcel serve ./src/index.html",
-    "build": "npm run clean && parcel build --public-url '.' ./src/index.html",
+    "build": "npm run clean && NODE_ENV=production parcel build --public-url '.' ./src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
