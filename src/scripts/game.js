@@ -79,7 +79,7 @@ $charless.forEach($s => {
         intvl1 = setTimeout(() => {
             $s.dispatchEvent(new Event('close:item'));
             clearTimeout(intvl1);
-        }, Math.random() * 1500);
+        }, 300 + Math.random() * window.defaultInterval * 0.55);
     });
 
     $s.addEventListener('close:item', () => {
@@ -95,7 +95,7 @@ $charless.forEach($s => {
             closing = clicked = false;
             $s.dispatchEvent(new Event('open:item'));
             clearTimeout(intvl2)
-        }, Math.random() * 2000);
+        }, 300 + Math.random() * window.defaultInterval);
         $bh.removeEventListener('transitionend', onTransitionEnd);
     };
 
