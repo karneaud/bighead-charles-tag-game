@@ -9,9 +9,15 @@ if(process.env.NODE_ENV != "production") {
 
 
 (($) => {
-
-    const  
-        $score = $.document.querySelector('#points'),
+    
+    $.defaultInterval = 2000; // 1 second
+    // Define the power curve parameters
+    const minInterval = 1000, // Minimum interval in milliseconds
+    maxInterval = 3500, // Maximum interval in milliseconds
+    minSeconds = 10, // Minimum remaining seconds for maximum speedup
+    maxSeconds = 30, // Maximum remaining seconds for minimum speedup
+    power = 2,
+    $score = $.document.querySelector('#points'),
         countdown = new Countdown('#countdown'),
         Game = new Singleton(), toggleMsgs = (msg) => {
             $currentMsg.classList.remove('show')
@@ -27,8 +33,10 @@ if(process.env.NODE_ENV != "production") {
                         Game.resume(); break;
                     case 'finished':
                     case false:
-                        countdown.start(30);
-                        Game.start(); break;
+                        countdown.start(maxSeconds);
+                        Game.start(); 
+                        $.defaultInterval = maxInterval;
+                        break;
                     default: break; 
                 }
                 
@@ -51,6 +59,14 @@ if(process.env.NODE_ENV != "production") {
     countdown.element.addEventListener('ended', event => {
         Game.finish()
     } ); 
+
+    countdown.element.addEventListener('tick',(e) => {
+        let speedupFactor = 1.5 - Math.pow((e.detail.remainingSeconds - minSeconds) / (maxSeconds - minSeconds), power);
+        $.defaultInterval = Math.floor(Math.max(
+            minInterval,
+        $.defaultInterval - speedupFactor - 1
+          ));
+    });
 
     var $currentMsg = $.document.querySelector('.show.message');
     $.tinyModal = new tinyModal(elem, opts);
