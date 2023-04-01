@@ -63,7 +63,7 @@ class Countdown {
     const remainingSeconds = Math.max(0, this.totalSeconds - elapsedTime);
     if (remainingSeconds !== this.secondsRemaining) {
       this.secondsRemaining = remainingSeconds;
-      this.emitEvent('tick', currentTime / 1000);
+      this.emitEvent('tick', { currentTime: currentTime / 1000, remainingSeconds });
       const formattedTime = this.format(remainingSeconds, '##:**');
       this.element.textContent = formattedTime;
     }
