@@ -18,6 +18,10 @@ body {
   font-family: "Arial", sans-serif;
   background-image: url(#{$asset-base-url + 'background.png'});
   background-size: 50%;
+  
+  @media screen and (orientation: landscape) and (min-width: 1080px) and (min-height: 1024px) {
+    margin: 25% 35%;
+  }
 }
 
 h1,
