@@ -63,7 +63,7 @@ $charless.forEach($s => {
         e.stopPropagation();
         e.preventDefault();
         if (!clicked && !closing) {
-            clearTimeout();
+            clearTimeout(intvl2);
             closing = true;
             clicked = true;
             document.dispatchEvent(new Event('charles:clicked'))
@@ -78,7 +78,7 @@ $charless.forEach($s => {
         $bh.classList.add('up');
         intvl1 = setTimeout(() => {
             $s.dispatchEvent(new Event('close:item'));
-            clearTimeout(intvl1);
+           // clearTimeout(intvl1);
         }, 300 + Math.random() * window.defaultInterval * 0.55);
     });
 
@@ -94,7 +94,7 @@ $charless.forEach($s => {
         intvl2 = setTimeout(() => {
             closing = clicked = false;
             $s.dispatchEvent(new Event('open:item'));
-            clearTimeout(intvl2)
+            // clearTimeout(intvl2)
         }, 300 + Math.random() * window.defaultInterval);
         $bh.removeEventListener('transitionend', onTransitionEnd);
     };
