@@ -9,14 +9,16 @@
   }
 
   #score {
+    color: $primary;
     i {
       font-variant: small-caps; 
-      font-size: .457rem;
+      font-size: .43rem;
     }
   }
   
   /* timer and score board*/
   .dashboard {
+    font-size: 2.3rem;
     border-radius: 12px;
     border:7px solid $secondary;
     padding: 4px;
