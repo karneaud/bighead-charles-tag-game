@@ -59,15 +59,17 @@ $charless.forEach($s => {
     let closing = false;
     let clicked = false;
     let intvl1, intvl2;
+    let clickTime = Date.now();
     $s.addEventListener(touchClick, (e) => {
         e.stopPropagation();
         e.preventDefault();
-        if (!clicked && !closing) {
+        if (!clicked && !closing && ((Date.now() - clickTime) > 9000)) {
             clearTimeout(intvl2);
             closing = true;
             clicked = true;
             document.dispatchEvent(new Event('charles:clicked'))
             $s.dispatchEvent(new Event('close:item'));
+            clickTime = Date.now()
         }
 
         return false;
