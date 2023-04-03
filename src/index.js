@@ -13,7 +13,7 @@ if(process.env.NODE_ENV != "production") {
     $.defaultInterval = 2000; // 1 second
     // Define the power curve parameters
     const minInterval = 1000, // Minimum interval in milliseconds
-    maxInterval = 3500, // Maximum interval in milliseconds
+    maxInterval = 3750, // Maximum interval in milliseconds
     minSeconds = 10, // Minimum remaining seconds for maximum speedup
     maxSeconds = 45, // Maximum remaining seconds for minimum speedup
     power = 2,
@@ -86,7 +86,7 @@ if(process.env.NODE_ENV != "production") {
             default: if($.tinyModal.isShown) $.tinyModal.hide(); break; 
         }
     });
-   $.tinyModal.show();
+    $.tinyModal.show();
    preload.fetch(['./assets/logo.png', './assets/background.png','./assets/bush2.png','./assets/bush3.png','./assets/ch1.png','./assets/ch3.png','./assets/ch4.png']
         );
 })(window)
