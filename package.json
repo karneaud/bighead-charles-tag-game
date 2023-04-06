@@ -9,7 +9,7 @@
     "start": "npm run clean && parcel serve ./src/index.html",
     "build": "npm run clean && NODE_ENV=production parcel build --public-url '.' ./src/index.html ",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pwa:build": "pwa-asset-generator -b '#c9d955' -i ./dist/index.html -m ./dist/manifest.webmanifest -t png -w true --path-override ./assets/icons ./icon.png ./dist/assets/icons && html-minifier-terser --collapse-whitespace --output dist dist/index.html dist/manifest.webmanifest"
+    "pwa:build": "pwa-asset-generator -b '#c9d955' -i ./dist/index.html -m ./dist/manifest.webmanifest -t png -w true --path-override ./assets/icons ./icon.png ./dist/assets/icons && html-minifier-terser --collapse-whitespace --output dist/index.html dist/index.html && html-minifier-terser --collapse--whitespace --output dist/manifest.webmanifest dist/manifest.webmanifest"
   },
   "repository": {
     "type": "git",
