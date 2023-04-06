@@ -1,30 +1,42 @@
 {
-  "name": "parcel-html-sass-js-starter-template",
+  "name": "parcel-html-game-big-head-charles-tag",
   "version": "0.1.0",
+  "entry": "src/index.html",
+  "output": "dist/",
   "description": "Starter template for building static web apps with HTML partials, SASS, and JavaScript.",
   "scripts": {
     "clean": "rimraf dist",
     "start": "npm run clean && parcel serve ./src/index.html",
-    "build": "npm run clean && NODE_ENV=production parcel build --public-url '.' ./src/index.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npm run clean && NODE_ENV=production parcel build --public-url '.' ./src/index.html ",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pwa:build": "pwa-asset-generator -b '#c9d955' -i ./dist/index.html -m ./dist/manifest.webmanifest -t png -w true --path-override ./assets/icons ./icon.png ./dist/assets/icons && html-minifier-terser --collapse-whitespace --output dist dist/index.html dist/manifest.webmanifest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aileen-r/parcel-html-sass-js-starter-template.git"
   },
-  "author": "Aileen Rae",
+  "author": "Kendall Arneaud",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/aileen-r/parcel-html-sass-js-starter-template/issues"
   },
+  "assets-rewrite": {
+    "src/assets/(.+)\\.png": "assets/$1.png"
+  },
   "homepage": "https://parcel-html-sass-js-starter-template.netlify.app",
   "devDependencies": {
+    "@parcel/packager-raw-url": "^2.5.0",
+    "@parcel/transformer-posthtml": "^2.8.3",
     "@parcel/transformer-sass": "^2.0.0",
+    "@parcel/transformer-webmanifest": "^2.8.3",
     "buffer": "^6.0.3",
     "eruda": "^2.11.3",
-    "parcel": "^2.0.0",
+    "html-minifier-terser": "^7.1.0",
+    "parcel": "^2.8.3",
+    "parcel-namer-path": "^1.0.3",
     "posthtml-include": "^1.7.2",
     "process": "^0.11.10",
+    "pwa-asset-generator": "^6.2.1",
     "rimraf": "^3.0.2"
   },
   "dependencies": {
