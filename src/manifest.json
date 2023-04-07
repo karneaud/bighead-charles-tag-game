@@ -1,10 +1,10 @@
 {
   "name": "Big Head Charles Tag",
-  "short_name": "BigHeadCharles",
+  "short_name": "BigHeadCharles Tag",
   "theme_color": "#03a6a6",
   "background_color": "#c9d955",
   "display": "standalone",
   "scope": "./",
-  "description": "HTML5 game based on Big Head Charles.",
+  "description": "HTML5 game of tag based on Big Head Charles.",
   "start_url": "./"
 }
