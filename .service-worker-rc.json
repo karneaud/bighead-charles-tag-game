@@ -1,0 +1,9 @@
+{
+    "globPatterns": "**/*.{html,css,js,png,jpg,webmanifest}",
+    "inputDirectory": "dist",
+    "outputDirectory": "dist",
+    "externalAssets": [
+        "https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@900&amp;display=swap"
+    ],
+    "cacheId": "html5-bigheadcharles-game"
+}
