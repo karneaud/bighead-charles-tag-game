@@ -7,9 +7,10 @@
   "scripts": {
     "clean": "rimraf dist",
     "start": "npm run clean && parcel serve ./src/index.html",
-    "build": "npm run clean && NODE_ENV=production parcel build --public-url '.' ./src/index.html ",
+    "build": "npm run clean && NODE_ENV=production parcel build --no-source-maps --public-url '.' ./src/index.html && npm run pwa:build && npm run sw:build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "pwa:build": "pwa-asset-generator -b '#c9d955' -i ./dist/index.html -m ./dist/manifest.webmanifest -t png -w true --path-override ./assets/icons ./icon.png ./dist/assets/icons && html-minifier-terser --collapse-whitespace --output dist/index.html dist/index.html && html-minifier-terser --collapse--whitespace --output dist/manifest.webmanifest dist/manifest.webmanifest"
+    "pwa:build": "pwa-asset-generator -b '#c9d955' -i ./dist/index.html -m ./dist/manifest.webmanifest -t png -w true --path-override ./assets/icons ./icon.png ./dist/assets/icons && html-minifier-terser --collapse-whitespace --output dist/index.html dist/index.html && html-minifier-terser --collapse-whitespace --output dist/manifest.webmanifest dist/manifest.webmanifest",
+    "sw:build":"node ./lib/service-worker.js"
   },
   "repository": {
     "type": "git",
@@ -34,14 +35,34 @@
     "html-minifier-terser": "^7.1.0",
     "parcel": "^2.8.3",
     "parcel-namer-path": "^1.0.3",
+    "parcel-plugin-custom-service-worker": "^1.0.2",
     "posthtml-include": "^1.7.2",
     "process": "^0.11.10",
     "pwa-asset-generator": "^6.2.1",
-    "rimraf": "^3.0.2"
+    "rimraf": "^3.0.2",
+    "workbox-build": "^6.5.4"
   },
   "dependencies": {
     "preload-it": "^1.4.0",
     "prismjs": "^1.25.0",
     "tiny-modal": "^0.0.2"
+  },
+  "precachingSW": {
+    "bypass": false,
+    "allowed": [
+      "js",
+      "css",
+      "webmanifest",
+      "html",
+      "jpg",
+      "png"
+    ],
+    "additional": [
+      "./assets/icons/*.png",
+      "https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@900&amp;display=swap"
+    ],
+    "offlineUrl": "./index.html",
+    "fileName": "sw.js",
+    "outDir": "./dist"
   }
 }
