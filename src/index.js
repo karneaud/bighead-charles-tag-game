@@ -7,6 +7,13 @@ if(process.env.NODE_ENV != "production") {
     (require('eruda')).init()
 }
 
+if(process.env.NODE_ENV == "production") {
+    navigator.serviceWorker.register(
+        new URL('service-worker.js', import.meta.url),
+        {type: 'module'}
+      );
+}
+
 
 (($) => {
     
