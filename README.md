@@ -1,8 +1,46 @@
-# Parcel HTML, SASS, and JavaScript Starter Template
+# Big Head Charles HTML5 PWA Game 
 
-A blazing fast frontend development starter template, bundled using [Parcel](https://parceljs.org).
+A development project for HTML5 game built with [Parcel](https://parceljs.org).
+
+
+## Specs
+
+### Dependencies
+
+- Preload It
+- PrismJs
+- Tiny Modal
+
+### Tools
+
+- Parcel
+- Terser
+- Workbox
+- Post HTML Include
+- PWA Asset Generator
+- RimRaf
+- Sass
+
+### Project Structure
+
+- assets (images)
+- partials (html sections)
+- scripts (js)
+- styles (sass)
+- index.html (main file)
+- manifest.json (pwa)
+- service-worker.js (pwa)
+- styles.scss (main style sheet)
+- .parcelrc (parcel config)
+- .service-worker-rc.json (workbox config)
+- gitpod.yml (gitpod codespace)
+- icon.png (sample icon)
+- netlify.toml (netlify config)
+
 
 ## Quick Start
+
+### Netlify Deployment
 
 To get started instantly, you can one-click deploy to Netlify below (this also creates a copy of the repository in your own GitHub account), or you can click the "Use this Template" above.
 
@@ -79,6 +117,8 @@ a {
 
 ## How to run
 
+### Development 
+
 **Prerequisites**: You'll need [Node](https://nodejs.org) and [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed on your local computer.
 
 Run
@@ -89,14 +129,10 @@ npm install
 
 to install dependencies, then
 
-```
-npm start
-```
+`npm run start` will start a development service. Editing the scss, js and html files will trigger a compile int a *dist* folder when saved.
 
 to start the local development server.
 
 To build for production, run
 
-```
-npm run build
-```
+`npm run build` will empty the *dist* folder and compile the files with compression and also build the game pwa and service worker assets
