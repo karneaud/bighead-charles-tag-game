@@ -15,6 +15,7 @@
         width: 80%;
         height: auto;
         text-align: center;
+        padding: 12px;
     }
 
     .logo {
@@ -28,4 +29,8 @@
 
 .message.show {
     display: inline-block;
+}
+
+#scores-message {
+    width: 90%;
 }

@@ -12,8 +12,13 @@
             <div id="start-message" class="message">
                     <h3>Tag! You're It!</h3>
                     <p>Charles is dodging you from tagging him! Tag Charles before he tries to hide!</p>
+                    <a href="javascript:toggleMsg('profile')" class="btn btn-link">Profile</a>
                     <a href="javascript:tinyModal.hide()" class="btn btn-primary modal-hide">Let's Play!</a>
                 </div>
+                <div id="scores-message" class="message">
+                    <div id="leaderboard"></div>
+                    <a href="javascript:toggleMsg('start')" class="btn btn-secondary">Back</a>
+                </div> 
                 <div id="paused-message" class="message">
                     <h3>Hey!</h3>
                     <p>Let's play some more tag!</p>
@@ -21,8 +26,12 @@
                 </div> 
                 <div id="finished-message" class="message">
                     <h3>Yay!</h3>
-                    <p>Thanks for playing with me! Can we play again?</p>
+                    <p>Thanks for playing with me! You got <strong id="total" class="points">0</strong> points! Can we play again?</p>
                     <a href="javascript:tinyModal.hide()" class="btn btn-secondary modal-hide">Let's Go!</a>
+                </div>
+                <div id="profile-message" class="message">
+                    <div class=""></div>
+                    <a href="javascript:toggleMsg('start')" class="btn btn-secondary">Back</a>
                 </div>
             </div>
     </div>

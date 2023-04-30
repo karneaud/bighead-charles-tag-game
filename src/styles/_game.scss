@@ -210,3 +210,14 @@
     transform: translateX(0);
   }
 }
+
+#leaderboard {
+  margin:8px;
+  width: 100%;
+  #galaxyContainer {
+    width: 100%;
+    #galaxyFrame {
+      width: 100%;
+    }
+  }
+}
