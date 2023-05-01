@@ -25,9 +25,9 @@
 
     .github-button {
       align-items: center;
-      background-color: $background;
+      background-color: var(--background);
       border-radius: 5px;
-      color: $text;
+      color: var(--text);
       display: flex;
       font-size: 0.9em;
       height: 32px;

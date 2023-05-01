@@ -1,16 +1,4 @@
 // Define color variables
-:root {
-  --background : $background,
-  --secondary : $secondary,
-  --foreground:$foreground,
-  --heading :$heading,
-  --primary:$primary,
-  --link:$link,
-  --lnked-darkened:$link-darkened,
-  --link-muted:$link-muted,
-  --text:$text,
-  --text-muted: $text-muted
-}
 // Define button mixin
 
 $colors : (

@@ -5,7 +5,7 @@ progress {
 .progress-container {
     position: relative;
     display: inline-block;
-    background: $background;
+    background: var(--background);
     height: 20px;
     border-radius: 6px;
     overflow: hidden;
@@ -17,7 +17,7 @@ progress {
     top: 0;
     left: 0;
     height: 100%;
-    background: $primary;
+    background: var(--primary);
 }
 
 .progress-container::before {
