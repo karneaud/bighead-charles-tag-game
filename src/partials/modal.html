@@ -10,12 +10,13 @@
                   </div>
             </div>
             <div id="start-message" class="message">
-                    <h3>Tag! You're It!</h3>
+                    <h3>Tag! You're It<strong class="user_name"></strong>!</h3>
                     <p>Charles is dodging you from tagging him! Tag Charles before he tries to hide!</p>
                     <a href="javascript:toggleMsg('profile')" class="btn btn-link">Profile</a>
                     <a href="javascript:tinyModal.hide()" class="btn btn-primary modal-hide">Let's Play!</a>
                 </div>
                 <div id="scores-message" class="message">
+                  <p>Great<strong class="user_name"></strong>! See your rank so far on our leaderboard</p>
                    <a href="javascript:showLeaderboard()" class="btn btn-link">View</a> <a href="javascript:toggleMsg('start')" class="btn btn-secondary">Back</a>
                 </div> 
                 <div id="paused-message" class="message">
@@ -25,13 +26,13 @@
                 </div> 
                 <div id="finished-message" class="message">
                     <h3>Yay!</h3>
-                    <p>Thanks for playing with me! You got <strong id="total" class="points">0</strong> points! Can we play again?</p>
-                    <a href="javascript:submitScore()" class="btn btn-secondary">Submit</a> <a href="javascript:tinyModal.hide()" class="btn btn-secondary modal-hide">Let's Go!</a>
+                    <p>Thanks for playing with me<strong class="user_name"></strong>! You got <strong id="total" class="points">0</strong> points! Can we play again?</p>
+                    <a href="javascript:submitScore()" class="btn btn-heading">Submit</a> <a href="javascript:tinyModal.hide()" class="btn btn-secondary modal-hide">Let's Go!</a>
                 </div>
                 <div id="profile-message" class="message">
                     <form name="profile-form">
                       <fieldset class="container">
-                      <p><input type="text" class="input input-text" name="player_name" required placeholder="Enter a nickname" min="4"/>
+                      <p><input type="text" class="input input-text" name="player_name" required placeholder="Enter a nickname" min="4" max="6"/>
                       </p>
                       <p><input type="number" placeholder="How old are you?" step="1" min="4" class="input input-text" name="player_age" required/></p>
                     </fieldset>
