@@ -99,7 +99,7 @@ $charless.forEach($s => {
     $s.addEventListener(touchClick, (e) => {
         e.stopPropagation();
         e.preventDefault();
-        if (!clicked && !closing && ((Date.now() - clickTime) > 5000)) {
+        if (!clicked && !closing && ((Date.now() - clickTime) > 4350)) {
             clearTimeout(intvl2);
             closing = true;
             clicked = true;
