@@ -53,7 +53,7 @@ if (process.env.NODE_ENV == "production") {
             playerInfo = r.data.player_profile           
       })
       $.galaxy.ClientAPI.SaveState({
-        state:  { Age: 11 }
+        state:  { age }
       },(r,e) => {
         
       })
