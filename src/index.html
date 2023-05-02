@@ -26,7 +26,18 @@
     <link rel="manifest" href="./manifest.json">
     <link rel="stylesheet" href="./styles.scss">
     <script src="https://galaxy.us/galaxy.js"></script>
-   </head>
+    <script>
+      /** Game settings 
+       * Uncomment/ comment out the variables below to override some of the default game settings.
+       */
+      // Change the tmie limit for the game default 45s
+      // var MAX_TIMELIMIT = 60; 
+      // Change the game speed if it is too fast or too slow! default 3000ms 3s
+      var MAX_SPEED = 4000; // 3s in milliseconds 
+      // Override the default leaderboard id with a new one
+      // var LEADERBOARD_ID = 1234 
+    </script>
+  </head>
   <body>
     <include src="partials/main.html"></include>
     <script type="module" src="./index.js"></script>
