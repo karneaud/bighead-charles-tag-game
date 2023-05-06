@@ -2,54 +2,90 @@ class Singleton {
     constructor() {
       if (!Singleton.instance) {
         this._state = false;
+        this._score = 0
         Singleton.instance = this;
       }
   
       return Singleton.instance;
     }
+
+    get score() {
+        return this._score;
+    }
   
+    set score(value) {
+        this._score = value;
+    }
+
     get state() {
       return this._state;
     }
   
-    set state(newState) {
-      let s = this._state;
-      this._state = newState;
-  
-      const event = new CustomEvent('gameStateChange', {
-        detail: {
-          currentState: this._state,
-          previousState: s
-        }
-      });
-  
-      window.document.dispatchEvent(event);
+    set state(value) {
+      this._state = value;
     }
   
     start() {
         $charless.forEach((e,i) => {
             setTimeout(() => e.dispatchEvent(new Event('open:item')), Math.random() * 1000)    
         })
-        this.state = 'started';
+        this.resetScore();
+        this.setState('started');
     }
   
     stop() {
-        this.state = 'stopped';
+        this.setState('stopped');
     }
   
     pause(timeRemaining) {
-        this.state = 'paused';
+        this.setState('paused');
     }
 
     resume() {
-        this.state = 'started';
+        this.setState('started');
     }
-  
+
     finish() {
-        this.state = 'finished';
+        this.setState('finished');
         $charless.forEach((e) => {
             e.dispatchEvent(new Event('clear:intvl'))
         })
+    }
+
+    setState(value) {
+        let s = this.state;
+      this.state = value;
+      const event = new CustomEvent('gameStateChange', {
+        detail: {
+          currentState: this.state,
+          previousState: s
+        }
+      });
+  
+      window.document.dispatchEvent(event);
+    }
+
+    setScore(point = 1) {
+        this.score += point;
+        const event = new CustomEvent('gameScoreChange', {
+            detail: {
+              currentScore: this.score,
+            }
+          });
+      
+        window.document.dispatchEvent(event);
+    }
+
+    getScore(){
+        return this.score;
+    }
+
+    getState() {
+        return this.state;
+    }
+
+    resetScore() {
+        this.setScore(0 - this.score);
     }
 }
 
@@ -63,11 +99,12 @@ $charless.forEach($s => {
     $s.addEventListener(touchClick, (e) => {
         e.stopPropagation();
         e.preventDefault();
-        if (!clicked && !closing && ((Date.now() - clickTime) > 9000)) {
+        if (!clicked && !closing && ((Date.now() - clickTime) > 4350)) {
             clearTimeout(intvl2);
             closing = true;
             clicked = true;
-            document.dispatchEvent(new Event('charles:clicked'))
+            //document.dispatchEvent(new Event('charles:clicked'))
+            Game.setScore();
             $s.dispatchEvent(new Event('close:item'));
             clickTime = Date.now()
         }
@@ -112,4 +149,5 @@ $charless.forEach($s => {
         
 });
 
-export default Singleton;
+const Game = new Singleton
+export default Game;

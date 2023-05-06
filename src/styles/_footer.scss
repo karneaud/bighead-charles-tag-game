@@ -1,5 +1,5 @@
 .footer {
-  color: $text;
+  color: var(--text);
   font-size: .68rem;
   line-height: .90rem;
   padding: 2em 1.5em;
@@ -12,7 +12,7 @@
   z-index: 0;
 
     a {
-      color: $secondary;
+      color: var(--secondary);
 
       &:hover {
         text-decoration: underline;

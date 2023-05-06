@@ -1,6 +1,7 @@
-.modal { width: 100%; height: 100%; display: none; background: rgba(0,0,0,.5); z-index: 4000; }
+.modal { width: 100%; height: 100%; display: none; background: rgba(0,0,0,.5); z-index: 4000; pointer-events: none; }
 .modal-dialog {
     border-radius: 24px;
+    pointer-events: auto;
     margin: 5%;height:calc(100% - 10%); width: calc(100% - 10%); 
     background: #fff; 
     display: flex;
@@ -15,6 +16,7 @@
         width: 80%;
         height: auto;
         text-align: center;
+        padding: 12px;
     }
 
     .logo {
@@ -29,3 +31,42 @@
 .message.show {
     display: inline-block;
 }
+
+#scores-message {
+    width: 90%;
+}
+
+form[name='profile-form'] {
+  fieldset {
+    border: none;
+    margin-bottom: 18px;
+  }
+
+  input {
+    height: 32px;
+    padding: 0 8px;
+    background-color: var(--heading);
+    border: none;
+    color: black;
+    border-radius: 7px;
+    font-weight: bold;
+    &::placeholder {
+      color: white;
+    }
+  }
+}
+
+.submitting {
+  animation: submit 1s infinite linear alternate-reverse;
+}
+
+@keyframes submit {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+

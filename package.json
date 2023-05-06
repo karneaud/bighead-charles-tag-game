@@ -6,11 +6,11 @@
   "description": "Starter template for building static web apps with HTML partials, SASS, and JavaScript.",
   "scripts": {
     "clean": "rimraf dist",
-    "start": "npm run clean && parcel serve ./src/index.html",
+    "start": "npm run clean && parcel serve --host '0.0.0.0' ./src/index.html",
     "build": "npm run clean && NODE_ENV=production parcel build --no-source-maps --public-url '.' ./src/index.html && npm run pwa:build && npm run sw:build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pwa:build": "pwa-asset-generator -b '#c9d955' -i ./dist/index.html -m ./dist/manifest.webmanifest -t png -w true --path-override ./assets/icons ./icon.png ./dist/assets/icons && html-minifier-terser --collapse-whitespace --output dist/index.html dist/index.html && html-minifier-terser --collapse-whitespace --output dist/manifest.webmanifest dist/manifest.webmanifest",
-    "sw:build":"node ./lib/service-worker.js"
+    "sw:build": "node ./lib/service-worker.js"
   },
   "repository": {
     "type": "git",
@@ -43,6 +43,7 @@
     "workbox-build": "^6.5.4"
   },
   "dependencies": {
+    "glob": "^10.2.2",
     "preload-it": "^1.4.0",
     "prismjs": "^1.25.0",
     "tiny-modal": "^0.0.2"
