@@ -34,8 +34,8 @@ if (process.env.NODE_ENV == "production") {
         toggleMsg('scores')
       })
     }, saveProfile = () => {
-      var name = $playerNameInpt.value, age = $playerAgeInpt.value
-      if (!name || !age) return ;
+      var name = $playerNameInpt.value
+      if (!name) return ;
   
       $.galaxy.ClientAPI.UpdatePlayerProfile(
         {
@@ -48,16 +48,10 @@ if (process.env.NODE_ENV == "production") {
 
             if(e) return ;
             
-            r.data.player_profile.state = { age }
             $.localStorage.setItem('player', JSON.stringify(r.data.player_profile))
             playerInfo = r.data.player_profile           
       })
-      $.galaxy.ClientAPI.SaveState({
-        state:  { age }
-      },(r,e) => {
-        
-      })
-      playerInfo = { nickname: name, state: { age } }
+      playerInfo = { nickname: name }
       setPlayerName(name)
   }, minInterval = 1000, // Minimum interval in milliseconds
     maxInterval = $.MAX_SPEED ? parseInt($.MAX_SPEED) : 3750, // Maximum interval in milliseconds
@@ -109,7 +103,7 @@ if (process.env.NODE_ENV == "production") {
     ));
   });
 
-  var $currentMsg = $.document.querySelector('.show.message'), $playerNameInpt = $.document.querySelector('input[name=player_name]'), $playerAgeInpt = $.document.querySelector('input[name=player_age]'),
+  var $currentMsg = $.document.querySelector('.show.message'), $playerNameInpt = $.document.querySelector('input[name=player_name]'),
     $formBtn = $.document.querySelector('form[name=profile-form] > button'),
     playerInfo = $.localStorage.getItem('player') || false, $userName = $.document.querySelectorAll('.user_name');
   playerInfo = playerInfo ? JSON.parse(playerInfo) : false;
@@ -162,6 +156,5 @@ if (process.env.NODE_ENV == "production") {
       setPlayerName(playerInfo.nickname )
       $formBtn.textContent = 'Update';
       $playerNameInpt.value = playerInfo.nickname
-      $playerAgeInpt.value = playerInfo.state.age
         }
 })(window)
