@@ -1,6 +1,6 @@
 {
   "name": "parcel-html-game-big-head-charles-tag",
-  "version": "0.1.0",
+  "version": "1.2.1",
   "entry": "src/index.html",
   "output": "dist/",
   "description": "Starter template for building static web apps with HTML partials, SASS, and JavaScript.",
